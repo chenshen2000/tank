@@ -1,0 +1,96 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+ul,li {
+    list-style: none;
+}
+mine\:one {
+    display:inline-block;
+    width: 16px;
+    height: 8px;
+    background-image: url(../images/General-Sprites.png);
+    background-position: -512px -136px;
+    background-size: 800px 512px;
+}
+mine\:two {
+    display:inline-block;
+    width: 16px;
+    height: 8px;
+    background-image: url(../images/General-Sprites.png);
+    background-position: -512px -128px;
+    background-size: 800px 512px;
+}
+mine\:k{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+}
+#box {
+    width: 512px;
+    height: 480px;
+    background-color: black;
+    margin:auto;
+    overflow: hidden;
+    position: relative;
+}
+.title {
+    width: 74%;
+    margin: auto;
+    margin-top: 70px;
+}
+.title>div>ul {
+    margin:15px;
+    float: left;
+}
+.C>li,
+.H>li,
+.E>li,
+.N>li,
+.T>li,
+.A>li,
+.K>li{
+    height: 8px;
+}
+.content {
+    margin: auto;
+    margin-top: 60px;
+    width: 30%;
+    position: relative;
+}
+.content ul>li {
+    
+    height: 40px;
+    color: #ffff;
+    font-weight: 550;
+    font-size: 20px;
+    letter-spacing: 4px;
+    line-height: 40px;
+}
+.content ul>li:hover {
+    background-color: rgba(173, 16, 63, 0.575);
+    cursor: pointer;
+}
+.tankmove {
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    background-image: url(../images/General-Sprites.png);
+    background-position: -194px -2px;
+    background-size: 800px 512px;
+    position: absolute;
+    top: 7px;
+    left: -46px;
+}
+#help {
+    width: 150px;
+    height: 100px;
+    border: 2px dashed gray;
+    position: absolute;
+    top: 0;
+    right: -160px;
+}
+p {
+    text-align: center;
+}

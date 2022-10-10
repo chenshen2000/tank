@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage List</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico"/>
+    <script type="text/javascript" src="./JS/FileSaver.js" charset="utf-8"></script>
+    <script src="./js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="./css/stageList.css">
+</head>
+<body>
+    <div id="box">
+            <div id="content">
+                <div class="home"></div>
+            </div>
+            <div id="choose">
+                <div class="obstacle black"></div>
+                <div class="obstacle redBrick"></div>
+                <div class="obstacle stoneBrick"></div>
+                <div class="obstacle sea"></div>
+                <div class="obstacle area"></div>
+                <div class="obstacle grass"></div>
+                <div class="shear"></div>
+                <input type="button" id="export" onclick="Clickout()" value="导出地图"/>
+            </div>
+    </div>
+</body>
+<script>
+    var obj=$(".obstacle.black"); //当前选中的障碍物,默认没有
+    for(let i=0;i<15;i++)
+    {
+        for(let j=0;j<16;j++)
+        {
+            let element=$('<div class="'+i+'a'+j+' nowObstacle"></div>');
+            $('#content').append(element);
+           $("."+i+"a"+j).css({"top": 32*i+"px","left": 32*j+"px","background-position": "-560px -144px"});
+        }
+    }
+    $("#choose>.obstacle").click(function(){
+        var obstacle=$(this).offset();
+        $(".shear").css("top",(obstacle.top+5)+"px");
+        $(".shear").css("display","block");
+        obj=$(this);
+    });
+    $(".nowObstacle").mouseenter(function(){
+        if($(this).children().length==0)
+        {
+            $(this).css({"border": "2px dashed rgb(6, 75, 202)","box-sizing": "border-box"});
+        }
+        else if($(this).children().hasClass("black"))
+        {
+            $(this).children('.black').css({"border": "2px dashed rgb(6, 75, 202)","box-sizing": "border-box"});
+        }
+        
+    });
+    $(".nowObstacle").mouseleave(function(){
+        $(this).css({"border-style": "none","box-sizing": "content-box"});
+        if($(this).children().hasClass("black"))
+        {
+            $(this).children('.black').css({"border-style": "none","box-sizing": "content-box"});
+        }
+    });
+    $(".nowObstacle").click(function(){
+        if($(this).hasClass("0a0")  || $(this).hasClass("0a15"))
+        {
+            alert("敌方坦克出生的位置！不能设置障碍物。")
+        }
+        else if( $(this).hasClass("14a6"))
+        {
+            alert("我方坦克出生的位置！不能设置障碍物。");
+        }
+        else if($(this).children().length==0)
+        {
+            $(this).append(obj.clone());
+            $(this).children().css("position","static");
+            if($(this).children().hasClass("grass"))
+            {
+                $(this).css("z-index","3");
+            }
+        }
+        else
+        {
+            $(this).children().remove();
+            $(this).append(obj.clone());
+            $(this).children().css("position","static");
+            if($(this).children().hasClass("black"))
+            {
+                $(this).css("z-index","0");
+            }
+        }
+
+    });
+    function Clickout(){
+            var content = $("#content").html();
+            var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
+            var textname=prompt("请输入所导出的文件名","例如：stageList1.json")
+            saveAs(blob, textname);
+        };
+</script>
+</html>

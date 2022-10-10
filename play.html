@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tank-play</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico"/>
+    <link rel="stylesheet" href="./css/stageList.css">
+    <script src="./js/jquery-1.8.3.min.js"></script>
+    <style>
+        * {
+           margin: 0;
+           padding: 0;
+       }
+       ul,li {
+           list-style: none;
+       }
+       #box,
+       #map {
+           width: 512px;
+           height: 480px;
+           background-color: black;
+           margin:auto;
+           position: relative;
+       }
+       #help {
+            width: 160px;
+            height: 200px;
+            border: 2px dashed gray;
+            position: absolute;
+            top: 0;
+            right: -180px;
+        }
+        p {
+            text-align: center;
+        }
+        .startAnimate {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            background-image: url(./images/General-Sprites.png);
+            background-size: 800px 512px;
+            position: absolute;
+        }
+        .tankmove {
+            width: 26px;
+            height: 26px;
+            display: inline-block;
+            background-image: url(./images/General-Sprites.png);
+            background-position: -2px -4px;
+            background-size: 800px 512px;
+            position: absolute;
+            z-index: 2;
+        }
+        .bullet {
+            width: 8px;
+            height: 8px;
+            display:inline-block;
+            background-image: url(./images/General-Sprites.png);
+            background-position: -644px -203px;
+            background-size: 800px 512px;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            z-index: 1;
+
+        }
+        .enemy {
+            width: 26px;
+            height: 26px;
+            display: inline-block;
+            background-image: url(./images/General-Sprites.png);
+            background-position: -386px -2px;
+            background-size: 800px 512px;
+            position: absolute;
+            z-index: 2;
+        }
+        #map{
+            background-color: gray;
+            z-index: 100;
+        }
+        #import {
+            display: block;
+            width: 100px;
+            height: 40px;
+            font-size: 22px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -20px;
+            margin-left: -50px;
+        }
+   </style>
+</head>
+<body onkeydown="key()">
+    <div id="box">
+        <div id="content"></div>
+        <div class="startAnimate startTank"></div>
+        <div class="tankmove" direction="up"></div>
+        <div id="help">
+            <button onclick="HIDE()">隐藏</button>
+            <p>W 或 ↑ 坦克向上移动</p>
+            <p>S 或 ↓ 坦克向下移动</p>
+            <p>A 或 ← 坦克向左移动</p>
+            <p>D 或 → 坦克向右移动</p>
+            <p>J 发射子弹</p>    
+        </div>
+        <div id="map">
+            <input type="file" id="files" style="display:none" onchange="Import()"/>
+            <input type="button" id="import" onclick="Clickin()" value="导入地图"/>
+        </div>
+    </div>
+</body>
+<script src="./map/import-map.js"></script>
+<script src="./js/play-hiders.js"></script>
+<script src="./js/play.js"></script>
+<script src="./js/play-enemy.js"></script>
+<script src="./js/play-burst.js"></script>
+</html>

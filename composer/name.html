@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:mine>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>名字构图器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        mine\:one {
+            display: block;
+            width: 16px;
+            height: 8px;
+            background-image: url(../images/General-Sprites.png);
+            background-position: -512px -136px;
+            background-size: 800px 512px;
+            float:left;
+        }
+        mine\:two {
+            display: block;
+            width: 16px;
+            height: 8px;
+            background-image: url(../images/General-Sprites.png);
+            background-position: -512px -128px;
+            background-size: 800px 512px;
+            float:left;
+        }
+        mine\:k{
+            display:  block;
+            width: 8px;
+            height: 8px;
+            background-color: black;
+            float:left;
+        }
+        #app {
+            display: inline-block;
+            width: 96px;
+            height: 56px;
+            background-color: gray;
+        }
+        #choose{
+            display: inline-block;
+            width: 24px;
+            height: 54px;
+            border: 1px dashed black;
+        }
+        ul,li {
+            list-style: none;
+        }
+        #choose>ul>li {
+            width: 16px;
+            height: 8px;
+            line-height: 8px;
+            padding: 2px;
+        }
+        #choose>ul>li:hover {
+            border: 2px solid red;
+        }
+        #app>ul>li {
+            width: 96px;
+            height: 8px;
+        }
+
+        #app>ul>li:hover {
+            border: 1px dashed blue;
+            border-left-style: none;
+            border-right-style: none;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li onclick="add1(this)"></li>
+            <li onclick="add2(this)"></li>
+            <li onclick="add3(this)"></li>
+            <li onclick="add4(this)"></li>
+            <li onclick="add5(this)"></li>
+            <li onclick="add6(this)"></li>
+            <li onclick="add7(this)"></li>
+        </ul>
+
+    </div>
+    <div id="choose">
+        <ul>
+            <li onclick="show1(this)"><mine:k></mine:k></li>
+            <li onclick="show2(this)"><mine:one></mine:one></li>
+            <li onclick="show3(this)"><mine:two></mine:two></li>
+            <li onclick="show4(this)"><button style="width:16px; height:8px; background-color: orange; border-style:none"></button></li>
+        </ul>
+    </div>
+    <button onclick="code()">生成代码</button>
+</body>
+<script>
+    var nowObj;
+    function show1(obj){
+        nowObj=obj;
+        var child=obj.parentNode.childNodes;
+         for(var i=0;i<child.length;i++)
+         {
+            if(i%2!=0)
+            {
+                child[i].style.backgroundColor="white";
+            }
+
+         }
+        obj.style.backgroundColor="blue";
+    }
+    function show2(obj){
+        nowObj=obj;
+        var child=obj.parentNode.childNodes;
+        for(var i=0;i<child.length;i++)
+         {
+            if(i%2!=0)
+            {
+                child[i].style.backgroundColor="white";
+            }
+
+         }
+        obj.style.backgroundColor="blue";
+    }
+    function show3(obj){
+        nowObj=obj;
+        var child=obj.parentNode.childNodes;
+        for(var i=0;i<child.length;i++)
+         {
+            if(i%2!=0)
+            {
+                child[i].style.backgroundColor="white";
+            }
+
+         }
+        obj.style.backgroundColor="blue";
+    }
+    function show4(obj){
+        nowObj=obj;
+        var child=obj.parentNode.childNodes;
+        for(var i=0;i<child.length;i++)
+         {
+            if(i%2!=0)
+            {
+                child[i].style.backgroundColor="white";
+            }
+
+         }
+        obj.style.backgroundColor="blue";
+    }
+    function add1(obj){
+        if(nowObj.childNodes[0].nodeName=='MINE:K')
+        {
+            let child=document.createElement("mine:k");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=='MINE:ONE')
+        {
+            let child=document.createElement("mine:one");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="MINE:TWO")
+        {
+            let child=document.createElement("mine:two");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="BUTTON")
+        {
+            obj.removeChild(obj.childNodes[obj.childNodes.length-1]);
+        }
+    }
+    function add2(obj){
+        if(nowObj.childNodes[0].nodeName=='MINE:K')
+        {
+            let child=document.createElement("mine:k");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=='MINE:ONE')
+        {
+            let child=document.createElement("mine:one");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="MINE:TWO")
+        {
+            let child=document.createElement("mine:two");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="BUTTON")
+        {
+            obj.removeChild(obj.childNodes[obj.childNodes.length-1]);
+        }
+    }
+    function add3(obj){
+        if(nowObj.childNodes[0].nodeName=='MINE:K')
+        {
+            let child=document.createElement("mine:k");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=='MINE:ONE')
+        {
+            let child=document.createElement("mine:one");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="MINE:TWO")
+        {
+            let child=document.createElement("mine:two");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="BUTTON")
+        {
+            obj.removeChild(obj.childNodes[obj.childNodes.length-1]);
+        }
+    }
+    function add4(obj){
+        if(nowObj.childNodes[0].nodeName=='MINE:K')
+        {
+            let child=document.createElement("mine:k");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=='MINE:ONE')
+        {
+            let child=document.createElement("mine:one");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="MINE:TWO")
+        {
+            let child=document.createElement("mine:two");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="BUTTON")
+        {
+            obj.removeChild(obj.childNodes[obj.childNodes.length-1]);
+        }
+    }
+    function add5(obj){
+        if(nowObj.childNodes[0].nodeName=='MINE:K')
+        {
+            let child=document.createElement("mine:k");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=='MINE:ONE')
+        {
+            let child=document.createElement("mine:one");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="MINE:TWO")
+        {
+            let child=document.createElement("mine:two");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="BUTTON")
+        {
+            obj.removeChild(obj.childNodes[obj.childNodes.length-1]);
+        }
+    }
+    function add6(obj){
+        if(nowObj.childNodes[0].nodeName=='MINE:K')
+        {
+            let child=document.createElement("mine:k");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=='MINE:ONE')
+        {
+            let child=document.createElement("mine:one");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="MINE:TWO")
+        {
+            let child=document.createElement("mine:two");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="BUTTON")
+        {
+            obj.removeChild(obj.childNodes[obj.childNodes.length-1]);
+        }
+    }
+    function add7(obj){
+        if(nowObj.childNodes[0].nodeName=='MINE:K')
+        {
+            let child=document.createElement("mine:k");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=='MINE:ONE')
+        {
+            let child=document.createElement("mine:one");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="MINE:TWO")
+        {
+            let child=document.createElement("mine:two");
+            obj.appendChild(child);
+        }
+        else if(nowObj.childNodes[0].nodeName=="BUTTON")
+        {
+            obj.removeChild(obj.childNodes[obj.childNodes.length-1]);
+        }
+    }
+    function code(){
+        var content=document.getElementById("app");
+        console.log(content.childNodes[1]);
+    }
+</script>
+</html>

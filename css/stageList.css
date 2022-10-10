@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul,li {
+    list-style: none;
+}
+#box {
+    width: 512px;
+    height: 480px;
+    background-color: black;
+    margin: auto;
+    position: relative;
+}
+.obstacle,
+.nowObstacle,
+.home {
+    width: 32px;
+    height: 32px;
+    background-image: url(../images/General-Sprites.png);
+    background-size: 800px 512px;
+    position: absolute;   
+    left: 32px; 
+    z-index: 0;     
+}
+.obstacle.black {
+    background-position: -560px -144px;
+    top: 32px;
+}
+.obstacle.redBrick {
+    background-position: -512px -0px;
+    top: 96px;
+}
+.obstacle.stoneBrick {
+    background-position: -512px -32px;
+    top: 160px;
+}
+.obstacle.sea {
+    background-position: -512px -64px;
+    top: 224px;
+}
+.obstacle.area {
+    background-position: -576px -64px;
+    top: 288px;
+}
+.obstacle.grass {
+    background-position: -544px -64px;
+    top: 352px;
+}
+.shear {
+    width: 24px;
+    height: 21px;;
+    background-image: url(../images/shear.jpg);
+    position: absolute;
+    left: 4px;
+    display: none;
+}
+#choose {
+    width: 96px;
+    height: 480px;
+    position: absolute;
+    top: 0px;
+    left: 512px;
+    background-color: rgb(51, 51, 51);
+}
+#export {
+    position:absolute;
+    top: 416px;
+    left: 18px;
+}
+.home {
+    background-position: -608px -64px;
+    top: 448px;
+    left:256px;
+    z-index: 2;
+}
