@@ -23,6 +23,22 @@ function addHinderInfo(){
             }
         }
     }
+    hinders=$(".home");
+    var hindersInfo={};
+    hindersInfo.top=hinders.offset().top;
+    hindersInfo.left=hinders.offset().left;
+    hindersInfo.width=parseInt(hinders.width());
+    hindersInfo.height=parseInt(hinders.height());
+    hindersInfo.name=".home";
+    hindersArr.push(hindersInfo);
+    hindersInfo={};
+    hinders=$(".tankmove");
+    hindersInfo.top=hinders.offset().top;
+    hindersInfo.left=hinders.offset().left;
+    hindersInfo.width=parseInt(hinders.width());
+    hindersInfo.height=parseInt(hinders.height());
+    hindersInfo.name=".tankmove";
+    hindersArr.push(hindersInfo);
 }
 
 //障碍物检测

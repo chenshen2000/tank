@@ -29,16 +29,16 @@ mine\:k{
 }
 #box {
     width: 512px;
-    height: 480px;
+    height: 450px;
     background-color: black;
     margin:auto;
-    overflow: hidden;
     position: relative;
+    padding-top: 30px;
 }
 .title {
     width: 74%;
     margin: auto;
-    margin-top: 70px;
+    margin-top: 40px;
 }
 .title>div>ul {
     margin:15px;

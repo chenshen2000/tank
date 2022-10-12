@@ -23,12 +23,27 @@ function addBurstInfo(){
             }
         }
     }
+    burst=$(".home");
+    var burstInfo={};
+    burstInfo.top=burst.offset().top;
+    burstInfo.left=burst.offset().left;
+    burstInfo.width=parseInt(burst.width());
+    burstInfo.height=parseInt(burst.height());
+    burstInfo.name=".home";
+    burstArr.push(burstInfo);
+    burst=$(".tankmove");
+    burstInfo={};
+    burstInfo.top=burst.offset().top;
+    burstInfo.left=burst.offset().left;
+    burstInfo.width=parseInt(burst.width());
+    burstInfo.height=parseInt(burst.height());
+    burstInfo.name=".tankmove";
+    burstArr.push(burstInfo);
 }
 
 //爆炸检测
 function ETD(obj){
     var bulleter=$(obj);
-    console.log(obj)
     var bulleterTop=bulleter.offset().top;
     var bulleterLeft=bulleter.offset().left;
     var bulleterWidth=bulleter.width();
@@ -49,16 +64,26 @@ function ETD(obj){
         var burstHeight = burstArr[i]['height']; 
         var burstName=burstArr[i]['name'];
         if( bulleterName != burstName && bulleterLeft + bulleterWidth > burstLeft && bulleterLeft < burstLeft + burstWidth && bulleterTop + bulleterHeight > burstTop && bulleterTop < burstTop + burstHeight){
+            let string=""+burstName;
+            string=string.substring(1,2);
             $(bulleterName).remove();
-            $(burstName).remove();
-            burstArr.splice(i,1);
-            for(let j=0;j<burstArr.length;j++)
+            if($(burstName).children().hasClass("stoneBrick"))
             {
-                if(bulleterName==burstArr[j]['name'])
-                {
-                    burstArr.splice(j,1);
-                }
+                continue;
             }
+            $(burstName).remove();
+            if(string=="e")
+            {
+                clearInterval(burstArr[i]['settime']);
+                currentNumber--;
+                $(".enemyCount").text("敌人坦克剩余： "+(enemyNumber+currentNumber));
+            }
+            if(string=="h" || string=="t")
+            {
+                alert("game over!");
+                window.location.href="./play.html";
+            }
+            burstArr.splice(i,1);
             for(let j=0;j<hindersArr.length;j++)
             {
                 if(burstName==hindersArr[j]['name'])

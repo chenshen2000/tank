@@ -91,10 +91,21 @@
             margin-top: -20px;
             margin-left: -50px;
         }
+        .enemyCount {
+            width: 150px;
+            height: 50px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            margin: 20px auto;
+            line-height: 50px;
+            font-size: 16px;
+            text-align: center;
+        }
    </style>
 </head>
 <body onkeydown="key()">
     <div id="box">
+        <audio  class="shot" src="../music/bullet_shot.ogg"></audio>
         <div id="content"></div>
         <div class="startAnimate startTank"></div>
         <div class="tankmove" direction="up"></div>
@@ -104,7 +115,8 @@
             <p>S 或 ↓ 坦克向下移动</p>
             <p>A 或 ← 坦克向左移动</p>
             <p>D 或 → 坦克向右移动</p>
-            <p>J 发射子弹</p>    
+            <p>J 发射子弹</p>   
+            <div class="enemyCount"></div> 
         </div>
         <div id="map">
             <input type="file" id="files" style="display:none" onchange="Import()"/>

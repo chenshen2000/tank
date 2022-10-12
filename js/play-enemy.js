@@ -1,5 +1,5 @@
 var enemyNumber=20;  //敌人总数目
-// var currentNumber=0;  //目前敌人数目
+var currentNumber=0;  //目前敌人数目
 var enemynum=0;  //敌人坦克编号
 var flag=0; //防止两个敌人同时出现重叠
 //坦克产生之前动画效果
@@ -54,13 +54,13 @@ function enemyAppear(tempTop,tempLeft,bianhao){
     hindersInfo.height=parseInt(hinders.height());
     hindersInfo.name=string;
     hindersArr.push(hindersInfo);
-    enemyMove(enemyCreate,enemyClass);
+    enemyMove(enemyCreate,enemyClass,string);
 }
 
 //敌人自动移动并发射子弹
-function enemyMove(obj,obj2){
+function enemyMove(obj,obj2,string){
     var enemyDirection=0;
-    setInterval(function(){
+    var settime=setInterval(function(){
         switch(enemyDirection)
         {
             case 0:
@@ -111,5 +111,14 @@ function enemyMove(obj,obj2){
         }
         bulletAppear(obj2.nodeValue);
     },300);
+    burst=$(string);
+    var burstInfo={};
+    burstInfo.top=burst.offset().top;
+    burstInfo.left=burst.offset().left;
+    burstInfo.width=parseInt(burst.width());
+    burstInfo.height=parseInt(burst.height());
+    burstInfo.name=string;
+    burstInfo.settime=settime;
+    burstArr.push(burstInfo);
 }
 

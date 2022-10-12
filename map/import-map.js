@@ -27,13 +27,21 @@ function Import(){
 
         //敌人坦克产生
         var interval1=setInterval(function(){
-            enemyStartAnimate();
-            enemyNumber--;
-            if(enemynum==2){
-                clearInterval(interval1);
+            if(enemyNumber+currentNumber==0)
+            {
+                alert("恭喜你，游戏胜利！");
+                window.location.href="./play.html";
             }
+            if(currentNumber<=1 && enemyNumber!=0){
+                // clearInterval(interval1);
+                enemyStartAnimate();
+                currentNumber++;
+                enemyNumber--;
+            }
+
         },4000);
         
     };
     $("#map").slideUp();
+    $("body").append($('<audio src="../music/first.mp3" autoplay ></audio>'));
 }

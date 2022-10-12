@@ -20,14 +20,6 @@ function startAnimation(obj1,obj2,bianhao){
                 {
                     document.getElementsByClassName(obj1)[0].remove();
                     document.getElementsByClassName("tankmove")[0].style.display="inline-block";
-                    var hindersInfo={};
-                    var hinders=$(".tankmove");
-                    hindersInfo.top=hinders.offset().top;
-                    hindersInfo.left=hinders.offset().left;
-                    hindersInfo.width=parseInt(hinders.width());
-                    hindersInfo.height=parseInt(hinders.height());
-                    hindersInfo.name=".tankmove";
-                    hindersArr.push(hindersInfo);
                 }
                 else if(time==1 && obj2== "enemy")
                 {
@@ -105,6 +97,8 @@ function  key() {
 //子弹产生
 var numb=0;
 function bulletAppear(obj){
+    
+    if(obj=="tankmove") { document.getElementsByClassName("shot")[0].play();}
     var bulletCreate=document.createElement("div");
     var appear=document.createAttribute("class");
     appear.nodeValue="bullet bullet"+(numb++);
@@ -123,28 +117,32 @@ function bulletMove(obj1,obj2){
     if(direction=="up")
     {
         bullet.style.backgroundPosition="-644px -204px";
-        bullet.style.top=(tankTop)+"px";
+        bullet.style.top=(tankTop-8)+"px";
         bullet.style.left=(tankLeft+8)+"px";
     }
     else if(direction=="down")
     {
         bullet.style.backgroundPosition="-676px -204px";
-        bullet.style.top=(tankTop+18)+"px";
+        bullet.style.top=(tankTop+26)+"px";
         bullet.style.left=(tankLeft+8)+"px";
     }
     else if(direction=="left")
     {
         bullet.style.backgroundPosition="-660px -204px";
         bullet.style.top=(tankTop+8)+"px";
-        bullet.style.left=(tankLeft)+"px";
+        bullet.style.left=(tankLeft-8)+"px";
     }
     else{
         bullet.style.backgroundPosition="-692px -204px";
         bullet.style.top=(tankTop+8)+"px";
-        bullet.style.left=(tankLeft+18)+"px";
+        bullet.style.left=(tankLeft+26)+"px";
     }
     let i=0;
     var speed=4;
+    if(parseInt(bullet.style.top)<0 || parseInt(bullet.style.top)>472 || parseInt(bullet.style.left)<0 ||parseInt(bullet.style.left)>504 )
+    {
+        bullet.remove();
+    }
     if (direction == "up") {
         while (i <= parseInt(bullet.style.top)) {
             setTimeout(function () {
