@@ -43,5 +43,5 @@ function Import(){
         
     };
     $("#map").slideUp();
-    $("body").append($('<audio src="../music/first.mp3" autoplay ></audio>'));
+    $("body").append($('<audio src="./music/first.mp3" autoplay ></audio>'));
 }
