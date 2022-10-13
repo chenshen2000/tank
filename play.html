@@ -101,11 +101,23 @@
             font-size: 16px;
             text-align: center;
         }
+        .burstAnimation {
+            width: 32px;
+            height: 32px;
+            display: inline-block;
+            background-image: url(./images/General-Sprites.png);
+            background-position: -576px -256px;
+            background-size: 800px 512px;
+            position: absolute;
+            z-index: 3;
+            border-radius: 50%;
+        }
    </style>
 </head>
-<body onkeydown="key()">
+<body   onkeyup="key2()">
     <div id="box">
         <audio  class="shot" src="../music/bullet_shot.ogg"></audio>
+        <audio  class="Burst" src="../music/bullet_hit.ogg"></audio>
         <div id="content"></div>
         <div class="startAnimate startTank"></div>
         <div class="tankmove" direction="up"></div>

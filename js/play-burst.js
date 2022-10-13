@@ -40,6 +40,24 @@ function addBurstInfo(){
     burstInfo.name=".tankmove";
     burstArr.push(burstInfo);
 }
+//全图同时爆炸计数
+var burstCount=0;
+//爆炸动画
+function burstAnimation(obj){
+    let bullet=$(obj);
+    let currentBurst=$("#box");
+    let count=burstCount++;
+    currentBurst.append($('<div class="burstAnimation burstAnimation'+count+'"></div>'));
+    let burstTop=bullet.position().top-12;
+    let burstLeft=bullet.position().left-12;
+    bullet.remove();
+    document.getElementsByClassName("Burst")[0].play();
+    $(".burstAnimation"+count).css({"top":burstTop+"px","left": burstLeft+"px"});
+    setTimeout(function(){
+        $(".burstAnimation"+count).remove();
+    },100)
+    
+}
 
 //爆炸检测
 function ETD(obj){
@@ -48,7 +66,7 @@ function ETD(obj){
     var bulleterLeft=bulleter.offset().left;
     var bulleterWidth=bulleter.width();
     var bulleterHeight=bulleter.height();
-    var bulleterName=obj;
+    var bulleterName=bulleter.attr("class");
     for(let i=0;i<burstArr.length;i++)
     {
         if(!parseInt(burstArr[i]['name'].substring(1,2)))
@@ -66,8 +84,18 @@ function ETD(obj){
         if( bulleterName != burstName && bulleterLeft + bulleterWidth > burstLeft && bulleterLeft < burstLeft + burstWidth && bulleterTop + bulleterHeight > burstTop && bulleterTop < burstTop + burstHeight){
             let string=""+burstName;
             string=string.substring(1,2);
-            $(bulleterName).remove();
+            let string2=""+bulleterName;
+            string2=string2.substring(0,1);
+            burstAnimation(obj);
             if($(burstName).children().hasClass("stoneBrick"))
+            {
+                continue;
+            }
+            if(string=="e" && string2=="e")
+            {
+                continue;
+            }
+            if(string=="t" && string2=="b")
             {
                 continue;
             }
@@ -94,3 +122,4 @@ function ETD(obj){
         }
     }
 }
+

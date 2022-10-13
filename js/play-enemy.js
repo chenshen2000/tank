@@ -60,6 +60,7 @@ function enemyAppear(tempTop,tempLeft,bianhao){
 //敌人自动移动并发射子弹
 function enemyMove(obj,obj2,string){
     var enemyDirection=0;
+    let BULLETMOVE=0; //坦克每移动五次发射一次子弹
     var settime=setInterval(function(){
         switch(enemyDirection)
         {
@@ -109,7 +110,11 @@ function enemyMove(obj,obj2,string){
         if(directionTemp!=-1) {
             enemyDirection=directionTemp;
         }
-        bulletAppear(obj2.nodeValue);
+        if((++BULLETMOVE)==8)
+        {
+            bulletAppear(obj2.nodeValue);
+            BULLETMOVE=0;
+        }
     },300);
     burst=$(string);
     var burstInfo={};

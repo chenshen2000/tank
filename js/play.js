@@ -34,15 +34,37 @@ function startAnimation(obj1,obj2,bianhao){
             }
     }
 }
-
+//检测按键状态
+var keyState=false;
 //控制自己的坦克
 var move=document.getElementsByClassName("tankmove")[0];
 move.style.top="452px";
 move.style.left="194px";
-function  key() {
-    var code=event.keyCode;
-    var lenTop=(parseInt(move.style.top));
-    var lenLeft=(parseInt(move.style.left));
+
+// if(!keyState){       clearInterval(setKeyTime);}
+var code;
+document.onkeydown=function(){
+    code=event.keyCode;
+    if(code==87 || code== 38|| code== 83|| code== 40|| code== 65|| code== 37|| code== 68|| code== 39)
+    {
+        keyState=true;
+    }
+}
+document.onkeyup=function(){
+    code=event.keyCode;
+    if(code==87 || code== 38|| code== 83|| code== 40|| code== 65|| code== 37|| code== 68|| code== 39)
+    {
+        keyState=false;
+    }
+    }
+var setKeyTime=setInterval(function(){
+
+    var lenTop;
+    var lenLeft;
+    console.log(keyState,code)
+    if(keyState){
+    lenTop=(parseInt(move.style.top));
+    lenLeft=(parseInt(move.style.left));
     var temp=4;
     switch(code){
         case 87://上
@@ -69,9 +91,6 @@ function  key() {
             move.style.backgroundPosition="-194px -2px";
             move.setAttribute("direction","right");
             break;
-        case 74:
-            bulletAppear("tankmove");
-            break;
     }
     if(lenTop<0)
     {
@@ -92,16 +111,31 @@ function  key() {
     move.style.top=lenTop+"px";
     move.style.left=lenLeft+"px";
     rectIntersectsRect(".tankmove");
-}
+    }
+},20); 
 
+
+
+function key2(){
+    let code=event.keyCode;
+    if(code==74)
+    {
+        bulletAppear("tankmove");
+    }  
+}
 //子弹产生
 var numb=0;
 function bulletAppear(obj){
-    
     if(obj=="tankmove") { document.getElementsByClassName("shot")[0].play();}
     var bulletCreate=document.createElement("div");
     var appear=document.createAttribute("class");
-    appear.nodeValue="bullet bullet"+(numb++);
+    if(obj=="tankmove")
+    {
+        appear.nodeValue="bullet bullet"+(numb++);
+    }
+    else {
+        appear.nodeValue="e bullet bullet"+(numb++);
+    }
     bulletCreate.attributes.setNamedItem(appear);
     document.getElementById("box").appendChild(bulletCreate);
     bulletMove(obj,appear.nodeValue);
