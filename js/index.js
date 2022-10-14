@@ -20,7 +20,6 @@
 				moveBottom();
 				break;
             case 74:
-                console.log(move.style.top=="7px");
                 if(move.style.top=="7px")
                 {
                     window.location.href="./play.html";
@@ -32,4 +31,11 @@
     }
     function HIDE(){
         document.getElementById("help").style.display="none";
+    }
+
+    function play(){
+        window.location.href="./play.html";
+    }
+    function stageList(){
+        window.location.href="./stageList.html";
     }
